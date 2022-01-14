@@ -1,6 +1,7 @@
 import { Navigate,Routes,Route,BrowserRouter, useNavigate,Link} from "react-router-dom";
 import { useState,React } from "react";
 import Account from "./account";
+import Init from './init.js'
 import InitList from "./initList"
 import MyInitiative from "./MyInitiative"
 export default function Sidebar(props){
@@ -21,11 +22,10 @@ export default function Sidebar(props){
     return(
     
         <div className="sidebar">
-            
             {/* <Link to = {{pathname:"account",state:{...user}}}> */}
             {status.allInit?<InitList  user = {user}/>:""}
             {status.acc?<Account user = {user}/>:""}
-            {status.myInit?<MyInitiative init = {user.initiatives}/>:""}
+            {status.myInit?<MyInitiative init = {user.initiatives} empName = {user.name}/>:""}
             <img className = "user" name="acc" onClick = {handleClick} src={require("..//images//user.png")}/>
             <h2>{props.user.name}</h2>
             <h3>{props.user.email}</h3>

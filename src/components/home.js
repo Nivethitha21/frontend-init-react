@@ -22,23 +22,9 @@ export default function Home(){
         .then(dataa => {
             // console.log(dataa)
             return setUser(dataa)})},[])
-    // function handleClick(name)
-    // {
-    //     // let [name,value] = event.target?event.target:
-    //     console.log('called handleclick'+name)
-        
-    //     setStatus(() =>{
-    //         return {initList:false,acc:true,myInit:false}
-    //     })
-    //     setStatus((prevStatus) =>{
-    //         return{...prevStatus,[name]:true}
-    //     })
-    // }
     return(
         <div>
             <Sidebar user = {user}/>
-            
-            
         </div>
     )
 }

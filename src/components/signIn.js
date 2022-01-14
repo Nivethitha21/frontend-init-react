@@ -2,7 +2,7 @@ import {React, useState} from 'react'
 import { Navigate } from 'react-router-dom'
 export default function SignIn(){
     let [formData,setFormData] = useState({email:"",password:""})
-    let [status,setStatus] = useState({st:""})
+    let [status,setStatus] = useState({id:-2})
     function handleChange(event){
         console.log(event)
         const {name, value, type, checked} = event.target
@@ -20,12 +20,12 @@ export default function SignIn(){
             method: "POST",
             headers:{
                 'Content-Type': 'application/json',
-                'Accept': 'text/html'
+                'Accept': 'application/json'
             }
-        }) .then(res => res.text())
+        }) .then(res => res.json())
         .then(dataa => {
-            console.log(dataa)
-            return setStatus({st:dataa})})
+            // console.log('id: ',dataa)
+            return setStatus({id:dataa})})
         .catch((error) => console.log(error))
 
     }
@@ -42,10 +42,10 @@ export default function SignIn(){
             <button className="submit">Sign In</button>
             </form>
             
-            {/* <Outlet/> */}
-            {/* {isRedirect == true ?<Navigate to = "/home" />:" "} */}
             <img className="signUpImage" src={require("..//images//signUp.jpg")}/>
-            {status.st == "Login Successful"?<Navigate to = "/home"/>:<h3 style={{color:"red"}}>{status.st}</h3>}
+            {status.id == 0?<h3 style={{color:"red"}}>user not registered</h3>:status.id == -1?
+            <h3 style={{color:"red"}}>incorrect password</h3>:status.id > 0?
+            <Navigate to = {`/home/${status.id}`}/>:""}
         </div>
         </div>
     )

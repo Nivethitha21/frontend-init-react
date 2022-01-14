@@ -8,13 +8,13 @@ import Initiative from './components/initiative'
 import Home from './components/home'
 import SignUp from './components/SignUp';
 import SignIn from './components/signIn'
+import Account from './components/account'
 ReactDOM.render(
 <Router>
 <Routes>
-    {/* <Route path = "/" element = {<Inde/>}> */}
     <Route path="/" element={<SignUp/>}/>
-    <Route path="signIn" element={<SignIn/>}/>   
-    <Route path="home" element={<Home/>}/>  
+    <Route path="signIn"  element={<SignIn/>}/>   
+    <Route path="home/:eid" element={<Home/>}/> 
 </Routes>
 </Router>,document.getElementById("root"));
 
@@ -22,7 +22,7 @@ function Inde(){
     return(
         <div>
             <Link to="/signUp">Sign Up</Link>
-            <Link to="/signUp">Sign In</Link>
+            <Link to="/signIn">Sign In</Link>
         </div>
     )
 }

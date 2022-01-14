@@ -16,7 +16,7 @@ export default function Initiative(props){
             })
                .then(res => res.json())
                .then(dataa => {
-                   console.log(dataa)
+                //    console.log(dataa)
                    return setList(dataa)})
                .catch((error) => console.log(error))
        },[])
